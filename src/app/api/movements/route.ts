@@ -31,7 +31,7 @@ export async function GET(req: Request) {
     })
 
     const totalValue = movements.reduce((total, m) => {
-        return total + (m.quantity * m.part.price)
+        return total + (m.unitPrice * m.quantity)
     }, 0)
 
     return NextResponse.json({

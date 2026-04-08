@@ -51,7 +51,7 @@ function createSplash() {
         alwaysOnTop: true
     })
 
-    splash.loadFile(path.join(__dirname, "splash.html"))
+    splash.loadFile("electron/splash.html")
 
 }
 
@@ -61,8 +61,9 @@ function createWindow() {
 
         width: 1200,
         height: 800,
+        show: false,
 
-        icon: path.join(__dirname, "../build/icon.ico"),
+        icon: path.join(__dirname, "../electron-build/icon.ico"),
 
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
@@ -82,9 +83,9 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
-    setupDatabase()
-
     createSplash()
+
+    setupDatabase()
 
     startServer()
 

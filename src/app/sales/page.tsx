@@ -13,14 +13,12 @@ export default function Sales() {
     const [year, setYear] = useState(today.getFullYear())
 
     const [sales, setSales] = useState<any[]>([])
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState<number>(0)
 
     const [confirmOpen, setConfirmOpen] = useState(false)
     const [selectedSale, setSelectedSale] = useState<string | null>(null)
 
     async function deleteSale() {
-
-        // const confirmDelete = confirm("Deseja realmente excluir essa vanda?")
 
         if (!selectedSale) return
 
@@ -130,7 +128,7 @@ export default function Sales() {
                                 </td>
 
                                 <td className="p-2 border">
-                                    R$ {s.part.price}
+                                    R$ {s.unitPrice}
                                 </td>
 
                                 <td className="p-2 border">

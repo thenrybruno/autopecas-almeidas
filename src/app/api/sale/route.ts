@@ -27,7 +27,9 @@ export async function POST(req: Request) {
         data: {
             partId,
             type: "SALE",
-            quantity
+            quantity,
+            unitPrice: part.price,
+            total: part.price
         }
     })
 

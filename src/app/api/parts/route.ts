@@ -47,7 +47,9 @@ export async function POST(req: Request) {
         data: {
             partId: part.id,
             type: "ENTRY",
-            quantity: part.quantity
+            quantity: part.quantity,
+            unitPrice: part.price,
+            total: part.price
         }
     })
 

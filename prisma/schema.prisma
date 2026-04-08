@@ -48,6 +48,9 @@ model Movement {
   type     MovementType
   quantity Int
 
+  unitPrice Float
+  total     Float
+
   createdAt DateTime @default(now())
 }
 

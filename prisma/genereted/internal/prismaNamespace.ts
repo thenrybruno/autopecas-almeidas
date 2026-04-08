@@ -693,6 +693,8 @@ export const MovementScalarFieldEnum = {
   partId: 'partId',
   type: 'type',
   quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  total: 'total',
   createdAt: 'createdAt'
 } as const
 
