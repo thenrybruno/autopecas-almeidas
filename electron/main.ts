@@ -1,13 +1,41 @@
-import { spawn } from "child_process";
+import { execSync, spawn } from "child_process";
 import { BrowserWindow, app } from "electron";
 import path from "path";
 import { autoUpdater } from "electron-updater"
+import fs from "fs"
 
 let mainWindow: BrowserWindow | null = null
 let splash: BrowserWindow | null = null
 let server: any
 
-function startServer (){
+function setupDatabase() {
+
+    const userData = app.getPath("userData")
+
+    const dbPath = path.join(userData, "database.db")
+
+    if (!fs.existsSync(dbPath)) {
+
+        console.log("Banco não encontrado, criando banco...")
+
+        try {
+
+            execSync("npx tsx scripts/setupDatabase.ts", { stdio: "inherit" })
+
+        } catch (error) {
+
+            console.log("Erro ao configurar o banco de dados...", error)
+
+        }
+    } else {
+
+        console.log("Banco já existe.")
+
+    }
+
+}
+
+function startServer() {
     server = spawn("node", [
         path.join(__dirname, "../.next/standalone/server.js")
     ])
@@ -53,7 +81,9 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-    
+
+    setupDatabase()
+
     createSplash()
 
     startServer()
@@ -70,9 +100,9 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
 
-    if(process.platform !== "darwin") {
+    if (process.platform !== "darwin") {
 
-        if(server) server.kill()
+        if (server) server.kill()
 
         app.quit()
 
