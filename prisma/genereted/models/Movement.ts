@@ -45,6 +45,7 @@ export type MovementMinAggregateOutputType = {
   quantity: number | null
   unitPrice: number | null
   total: number | null
+  sellerId: string | null
   createdAt: Date | null
 }
 
@@ -55,6 +56,7 @@ export type MovementMaxAggregateOutputType = {
   quantity: number | null
   unitPrice: number | null
   total: number | null
+  sellerId: string | null
   createdAt: Date | null
 }
 
@@ -65,6 +67,7 @@ export type MovementCountAggregateOutputType = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: number
   createdAt: number
   _all: number
 }
@@ -89,6 +92,7 @@ export type MovementMinAggregateInputType = {
   quantity?: true
   unitPrice?: true
   total?: true
+  sellerId?: true
   createdAt?: true
 }
 
@@ -99,6 +103,7 @@ export type MovementMaxAggregateInputType = {
   quantity?: true
   unitPrice?: true
   total?: true
+  sellerId?: true
   createdAt?: true
 }
 
@@ -109,6 +114,7 @@ export type MovementCountAggregateInputType = {
   quantity?: true
   unitPrice?: true
   total?: true
+  sellerId?: true
   createdAt?: true
   _all?: true
 }
@@ -206,6 +212,7 @@ export type MovementGroupByOutputType = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: string
   createdAt: Date
   _count: MovementCountAggregateOutputType | null
   _avg: MovementAvgAggregateOutputType | null
@@ -239,8 +246,10 @@ export type MovementWhereInput = {
   quantity?: Prisma.IntFilter<"Movement"> | number
   unitPrice?: Prisma.FloatFilter<"Movement"> | number
   total?: Prisma.FloatFilter<"Movement"> | number
+  sellerId?: Prisma.StringFilter<"Movement"> | string
   createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
   part?: Prisma.XOR<Prisma.PartScalarRelationFilter, Prisma.PartWhereInput>
+  seller?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type MovementOrderByWithRelationInput = {
@@ -250,8 +259,10 @@ export type MovementOrderByWithRelationInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  sellerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   part?: Prisma.PartOrderByWithRelationInput
+  seller?: Prisma.UserOrderByWithRelationInput
 }
 
 export type MovementWhereUniqueInput = Prisma.AtLeast<{
@@ -264,8 +275,10 @@ export type MovementWhereUniqueInput = Prisma.AtLeast<{
   quantity?: Prisma.IntFilter<"Movement"> | number
   unitPrice?: Prisma.FloatFilter<"Movement"> | number
   total?: Prisma.FloatFilter<"Movement"> | number
+  sellerId?: Prisma.StringFilter<"Movement"> | string
   createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
   part?: Prisma.XOR<Prisma.PartScalarRelationFilter, Prisma.PartWhereInput>
+  seller?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type MovementOrderByWithAggregationInput = {
@@ -275,6 +288,7 @@ export type MovementOrderByWithAggregationInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  sellerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.MovementCountOrderByAggregateInput
   _avg?: Prisma.MovementAvgOrderByAggregateInput
@@ -293,6 +307,7 @@ export type MovementScalarWhereWithAggregatesInput = {
   quantity?: Prisma.IntWithAggregatesFilter<"Movement"> | number
   unitPrice?: Prisma.FloatWithAggregatesFilter<"Movement"> | number
   total?: Prisma.FloatWithAggregatesFilter<"Movement"> | number
+  sellerId?: Prisma.StringWithAggregatesFilter<"Movement"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Movement"> | Date | string
 }
 
@@ -304,6 +319,7 @@ export type MovementCreateInput = {
   total: number
   createdAt?: Date | string
   part: Prisma.PartCreateNestedOneWithoutMovementsInput
+  seller: Prisma.UserCreateNestedOneWithoutSalesInput
 }
 
 export type MovementUncheckedCreateInput = {
@@ -313,6 +329,7 @@ export type MovementUncheckedCreateInput = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: string
   createdAt?: Date | string
 }
 
@@ -324,6 +341,7 @@ export type MovementUpdateInput = {
   total?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   part?: Prisma.PartUpdateOneRequiredWithoutMovementsNestedInput
+  seller?: Prisma.UserUpdateOneRequiredWithoutSalesNestedInput
 }
 
 export type MovementUncheckedUpdateInput = {
@@ -333,6 +351,7 @@ export type MovementUncheckedUpdateInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
+  sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -343,6 +362,7 @@ export type MovementCreateManyInput = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: string
   createdAt?: Date | string
 }
 
@@ -362,6 +382,7 @@ export type MovementUncheckedUpdateManyInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
+  sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -382,6 +403,7 @@ export type MovementCountOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  sellerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -398,6 +420,7 @@ export type MovementMaxOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  sellerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -408,6 +431,7 @@ export type MovementMinOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  sellerId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -415,6 +439,48 @@ export type MovementSumOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
+}
+
+export type MovementCreateNestedManyWithoutSellerInput = {
+  create?: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput> | Prisma.MovementCreateWithoutSellerInput[] | Prisma.MovementUncheckedCreateWithoutSellerInput[]
+  connectOrCreate?: Prisma.MovementCreateOrConnectWithoutSellerInput | Prisma.MovementCreateOrConnectWithoutSellerInput[]
+  createMany?: Prisma.MovementCreateManySellerInputEnvelope
+  connect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+}
+
+export type MovementUncheckedCreateNestedManyWithoutSellerInput = {
+  create?: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput> | Prisma.MovementCreateWithoutSellerInput[] | Prisma.MovementUncheckedCreateWithoutSellerInput[]
+  connectOrCreate?: Prisma.MovementCreateOrConnectWithoutSellerInput | Prisma.MovementCreateOrConnectWithoutSellerInput[]
+  createMany?: Prisma.MovementCreateManySellerInputEnvelope
+  connect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+}
+
+export type MovementUpdateManyWithoutSellerNestedInput = {
+  create?: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput> | Prisma.MovementCreateWithoutSellerInput[] | Prisma.MovementUncheckedCreateWithoutSellerInput[]
+  connectOrCreate?: Prisma.MovementCreateOrConnectWithoutSellerInput | Prisma.MovementCreateOrConnectWithoutSellerInput[]
+  upsert?: Prisma.MovementUpsertWithWhereUniqueWithoutSellerInput | Prisma.MovementUpsertWithWhereUniqueWithoutSellerInput[]
+  createMany?: Prisma.MovementCreateManySellerInputEnvelope
+  set?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  disconnect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  delete?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  connect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  update?: Prisma.MovementUpdateWithWhereUniqueWithoutSellerInput | Prisma.MovementUpdateWithWhereUniqueWithoutSellerInput[]
+  updateMany?: Prisma.MovementUpdateManyWithWhereWithoutSellerInput | Prisma.MovementUpdateManyWithWhereWithoutSellerInput[]
+  deleteMany?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
+}
+
+export type MovementUncheckedUpdateManyWithoutSellerNestedInput = {
+  create?: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput> | Prisma.MovementCreateWithoutSellerInput[] | Prisma.MovementUncheckedCreateWithoutSellerInput[]
+  connectOrCreate?: Prisma.MovementCreateOrConnectWithoutSellerInput | Prisma.MovementCreateOrConnectWithoutSellerInput[]
+  upsert?: Prisma.MovementUpsertWithWhereUniqueWithoutSellerInput | Prisma.MovementUpsertWithWhereUniqueWithoutSellerInput[]
+  createMany?: Prisma.MovementCreateManySellerInputEnvelope
+  set?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  disconnect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  delete?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  connect?: Prisma.MovementWhereUniqueInput | Prisma.MovementWhereUniqueInput[]
+  update?: Prisma.MovementUpdateWithWhereUniqueWithoutSellerInput | Prisma.MovementUpdateWithWhereUniqueWithoutSellerInput[]
+  updateMany?: Prisma.MovementUpdateManyWithWhereWithoutSellerInput | Prisma.MovementUpdateManyWithWhereWithoutSellerInput[]
+  deleteMany?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
 }
 
 export type MovementCreateNestedManyWithoutPartInput = {
@@ -463,6 +529,65 @@ export type EnumMovementTypeFieldUpdateOperationsInput = {
   set?: $Enums.MovementType
 }
 
+export type MovementCreateWithoutSellerInput = {
+  id?: string
+  type: $Enums.MovementType
+  quantity: number
+  unitPrice: number
+  total: number
+  createdAt?: Date | string
+  part: Prisma.PartCreateNestedOneWithoutMovementsInput
+}
+
+export type MovementUncheckedCreateWithoutSellerInput = {
+  id?: string
+  partId: string
+  type: $Enums.MovementType
+  quantity: number
+  unitPrice: number
+  total: number
+  createdAt?: Date | string
+}
+
+export type MovementCreateOrConnectWithoutSellerInput = {
+  where: Prisma.MovementWhereUniqueInput
+  create: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput>
+}
+
+export type MovementCreateManySellerInputEnvelope = {
+  data: Prisma.MovementCreateManySellerInput | Prisma.MovementCreateManySellerInput[]
+}
+
+export type MovementUpsertWithWhereUniqueWithoutSellerInput = {
+  where: Prisma.MovementWhereUniqueInput
+  update: Prisma.XOR<Prisma.MovementUpdateWithoutSellerInput, Prisma.MovementUncheckedUpdateWithoutSellerInput>
+  create: Prisma.XOR<Prisma.MovementCreateWithoutSellerInput, Prisma.MovementUncheckedCreateWithoutSellerInput>
+}
+
+export type MovementUpdateWithWhereUniqueWithoutSellerInput = {
+  where: Prisma.MovementWhereUniqueInput
+  data: Prisma.XOR<Prisma.MovementUpdateWithoutSellerInput, Prisma.MovementUncheckedUpdateWithoutSellerInput>
+}
+
+export type MovementUpdateManyWithWhereWithoutSellerInput = {
+  where: Prisma.MovementScalarWhereInput
+  data: Prisma.XOR<Prisma.MovementUpdateManyMutationInput, Prisma.MovementUncheckedUpdateManyWithoutSellerInput>
+}
+
+export type MovementScalarWhereInput = {
+  AND?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
+  OR?: Prisma.MovementScalarWhereInput[]
+  NOT?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
+  id?: Prisma.StringFilter<"Movement"> | string
+  partId?: Prisma.StringFilter<"Movement"> | string
+  type?: Prisma.EnumMovementTypeFilter<"Movement"> | $Enums.MovementType
+  quantity?: Prisma.IntFilter<"Movement"> | number
+  unitPrice?: Prisma.FloatFilter<"Movement"> | number
+  total?: Prisma.FloatFilter<"Movement"> | number
+  sellerId?: Prisma.StringFilter<"Movement"> | string
+  createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
+}
+
 export type MovementCreateWithoutPartInput = {
   id?: string
   type: $Enums.MovementType
@@ -470,6 +595,7 @@ export type MovementCreateWithoutPartInput = {
   unitPrice: number
   total: number
   createdAt?: Date | string
+  seller: Prisma.UserCreateNestedOneWithoutSalesInput
 }
 
 export type MovementUncheckedCreateWithoutPartInput = {
@@ -478,6 +604,7 @@ export type MovementUncheckedCreateWithoutPartInput = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: string
   createdAt?: Date | string
 }
 
@@ -506,17 +633,44 @@ export type MovementUpdateManyWithWhereWithoutPartInput = {
   data: Prisma.XOR<Prisma.MovementUpdateManyMutationInput, Prisma.MovementUncheckedUpdateManyWithoutPartInput>
 }
 
-export type MovementScalarWhereInput = {
-  AND?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
-  OR?: Prisma.MovementScalarWhereInput[]
-  NOT?: Prisma.MovementScalarWhereInput | Prisma.MovementScalarWhereInput[]
-  id?: Prisma.StringFilter<"Movement"> | string
-  partId?: Prisma.StringFilter<"Movement"> | string
-  type?: Prisma.EnumMovementTypeFilter<"Movement"> | $Enums.MovementType
-  quantity?: Prisma.IntFilter<"Movement"> | number
-  unitPrice?: Prisma.FloatFilter<"Movement"> | number
-  total?: Prisma.FloatFilter<"Movement"> | number
-  createdAt?: Prisma.DateTimeFilter<"Movement"> | Date | string
+export type MovementCreateManySellerInput = {
+  id?: string
+  partId: string
+  type: $Enums.MovementType
+  quantity: number
+  unitPrice: number
+  total: number
+  createdAt?: Date | string
+}
+
+export type MovementUpdateWithoutSellerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  total?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  part?: Prisma.PartUpdateOneRequiredWithoutMovementsNestedInput
+}
+
+export type MovementUncheckedUpdateWithoutSellerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  total?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type MovementUncheckedUpdateManyWithoutSellerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  partId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumMovementTypeFieldUpdateOperationsInput | $Enums.MovementType
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  total?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type MovementCreateManyPartInput = {
@@ -525,6 +679,7 @@ export type MovementCreateManyPartInput = {
   quantity: number
   unitPrice: number
   total: number
+  sellerId: string
   createdAt?: Date | string
 }
 
@@ -535,6 +690,7 @@ export type MovementUpdateWithoutPartInput = {
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  seller?: Prisma.UserUpdateOneRequiredWithoutSalesNestedInput
 }
 
 export type MovementUncheckedUpdateWithoutPartInput = {
@@ -543,6 +699,7 @@ export type MovementUncheckedUpdateWithoutPartInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
+  sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -552,6 +709,7 @@ export type MovementUncheckedUpdateManyWithoutPartInput = {
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
+  sellerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -564,8 +722,10 @@ export type MovementSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
+  sellerId?: boolean
   createdAt?: boolean
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["movement"]>
 
 export type MovementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -575,8 +735,10 @@ export type MovementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
+  sellerId?: boolean
   createdAt?: boolean
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["movement"]>
 
 export type MovementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -586,8 +748,10 @@ export type MovementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
+  sellerId?: boolean
   createdAt?: boolean
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["movement"]>
 
 export type MovementSelectScalar = {
@@ -597,24 +761,29 @@ export type MovementSelectScalar = {
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
+  sellerId?: boolean
   createdAt?: boolean
 }
 
-export type MovementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "partId" | "type" | "quantity" | "unitPrice" | "total" | "createdAt", ExtArgs["result"]["movement"]>
+export type MovementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "partId" | "type" | "quantity" | "unitPrice" | "total" | "sellerId" | "createdAt", ExtArgs["result"]["movement"]>
 export type MovementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type MovementIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type MovementIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   part?: boolean | Prisma.PartDefaultArgs<ExtArgs>
+  seller?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $MovementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Movement"
   objects: {
     part: Prisma.$PartPayload<ExtArgs>
+    seller: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -623,6 +792,7 @@ export type $MovementPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     quantity: number
     unitPrice: number
     total: number
+    sellerId: string
     createdAt: Date
   }, ExtArgs["result"]["movement"]>
   composites: {}
@@ -1019,6 +1189,7 @@ readonly fields: MovementFieldRefs;
 export interface Prisma__MovementClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   part<T extends Prisma.PartDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PartDefaultArgs<ExtArgs>>): Prisma.Prisma__PartClient<runtime.Types.Result.GetResult<Prisma.$PartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  seller<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1054,6 +1225,7 @@ export interface MovementFieldRefs {
   readonly quantity: Prisma.FieldRef<"Movement", 'Int'>
   readonly unitPrice: Prisma.FieldRef<"Movement", 'Float'>
   readonly total: Prisma.FieldRef<"Movement", 'Float'>
+  readonly sellerId: Prisma.FieldRef<"Movement", 'String'>
   readonly createdAt: Prisma.FieldRef<"Movement", 'DateTime'>
 }
     

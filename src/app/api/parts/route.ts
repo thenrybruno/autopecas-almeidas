@@ -2,7 +2,7 @@ import { prisma } from "@/src/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-    
+
     const { searchParams } = new URL(req.url)
 
     const search = searchParams.get("search") || ""
@@ -38,9 +38,16 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+
     const data = await req.json()
     const part = await prisma.part.create({
-        data
+        data: {
+            name: data.name,
+            code: data.code,
+            brand: data.brand,
+            quantity: data.quantity,
+            price: data.price
+        }
     })
 
     await prisma.movement.create({
@@ -49,7 +56,8 @@ export async function POST(req: Request) {
             type: "ENTRY",
             quantity: part.quantity,
             unitPrice: part.price,
-            total: part.price
+            total: part.price,
+            sellerId: data.sellerId
         }
     })
 

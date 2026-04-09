@@ -83,9 +83,9 @@ function createWindow() {
 
 app.whenReady().then(() => {
 
-    createSplash()
-
     setupDatabase()
+
+    createSplash()
 
     startServer()
 

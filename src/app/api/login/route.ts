@@ -24,5 +24,5 @@ export async function POST(req: Request) {
         role: user.role
     })
 
-    return NextResponse.json({ token, role: user.role})
+    return NextResponse.json({ token, role: user.role, id: user.id})
 }

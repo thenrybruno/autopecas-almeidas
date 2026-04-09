@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 import { toast } from "sonner"
 import ConfirmModal from "../components/ConfirmModal"
+import { Trash2 } from "lucide-react"
 
 export default function Sales() {
 
@@ -111,8 +112,9 @@ export default function Sales() {
                         <tr className="border">
                             <th className="border p-2 w-[50%]">Peça</th>
                             <th className="border p-2 w-[10%]">Quantidade</th>
-                            <th className="border p-2 w-[15%]">Preço</th>
-                            <th className="boredr p-2 w-[15%]">Data</th>
+                            <th className="border p-2 w-[10%]">Preço</th>
+                            <th className="border p-2 w-[10%]">Vendedor</th>
+                            <th className="boredr p-2 w-[10%]">Data</th>
                             <th className="border p-2 w-[10%]">Ação</th>
                         </tr>
 
@@ -132,17 +134,24 @@ export default function Sales() {
                                 </td>
 
                                 <td className="p-2 border">
+                                    {s.seller.name}
+                                </td>
+
+                                <td className="p-2 border">
                                     {new Date(s.createdAt).toLocaleDateString()}
                                 </td>
                                 <td className="p-2 border">
-                                    <button 
-                                    className="bg-primary hover:bg-primaryDark transition duration-300 py-2 px-4 rounded cursor-pointer" 
-                                    onClick={() =>{
-                                        setSelectedSale(s.id)
-                                        setConfirmOpen(true)
-                                    }}>
-                                        Excluir
-                                    </button>
+                                    <div className="relative">
+                                        <button
+                                            className="w-24 bg-primary hover:bg-primaryDark transition duration-300 p-2 rounded cursor-pointer text-sm pl-5"
+                                            onClick={() => {
+                                                setSelectedSale(s.id)
+                                                setConfirmOpen(true)
+                                            }}>
+                                            <Trash2 size={14} className="absolute left-2 top-1/2 -translate-y-1/2 text-textLight ml-5"/>
+                                            Excluir
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
@@ -153,7 +162,7 @@ export default function Sales() {
 
             </div>
 
-            <ConfirmModal open={confirmOpen} title="Confirmar exclusão" message="Deseja realmente excluir essa venda?" onConfirm={deleteSale} onCancel={() => setConfirmOpen(false)}/>
+            <ConfirmModal open={confirmOpen} title="Confirmar exclusão" message="Deseja realmente excluir essa venda?" onConfirm={deleteSale} onCancel={() => setConfirmOpen(false)} />
 
         </div>
     )

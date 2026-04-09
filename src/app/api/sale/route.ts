@@ -2,7 +2,8 @@ import { prisma } from "@/src/lib/prisma"
 import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
-    const { partId, quantity } = await req.json()
+
+    const { partId, quantity, userId } = await req.json()
 
     const part = await prisma.part.findUnique({
         where: {id: partId}
@@ -29,7 +30,8 @@ export async function POST(req: Request) {
             type: "SALE",
             quantity,
             unitPrice: part.price,
-            total: part.price
+            total: part.price,
+            sellerId: userId,
         }
     })
 

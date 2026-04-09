@@ -40,13 +40,14 @@ function createSplash() {
         transparent: false,
         alwaysOnTop: true
     });
-    splash.loadFile(path_1.default.join(__dirname, "splash.html"));
+    splash.loadFile("electron/splash.html");
 }
 function createWindow() {
     mainWindow = new electron_1.BrowserWindow({
         width: 1200,
         height: 800,
-        icon: path_1.default.join(__dirname, "../build/icon.ico"),
+        show: false,
+        icon: path_1.default.join(__dirname, "../electron-build/icon.ico"),
         webPreferences: {
             preload: path_1.default.join(__dirname, "preload.js"),
             contextIsolation: true

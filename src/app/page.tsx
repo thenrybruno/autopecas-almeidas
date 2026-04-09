@@ -30,6 +30,7 @@ export default function Login() {
     if (data.token) {
       localStorage.setItem("token", data.token)
       localStorage.setItem("role", data.role)
+      localStorage.setItem("id", data.id)
       router.push("/dashboard")
     } else {
       toast.error("Usuario ou senha inválido!")
@@ -45,7 +46,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-background via-[#0B1140] to-primaryDark">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-background via-gradientColor to-primaryDark">
 
       <main className="w-96 p-10 rounded-xl bg-card shadow-2xl backdrop-blur border border-cardBorder">
 
@@ -74,11 +75,9 @@ export default function Login() {
 
           </div>
 
-
-
           <div className="relative">
 
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+            <Lock size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
 
             <input
               className="p-3 rounded bg-background text-textLight border border-borderColor w-full pl-12 outline-none focus:border-primary focus:ring-2 focus:ring-primary focus:shadow-[0_0_10px_rgba(225,29,46,0.7)]"

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import Navbar from "../../components/Navbar"
 import EditPartModal from "../../components/EditPartModal"
+import { Search } from "lucide-react"
 
 export default function AdminParts() {
 
@@ -53,12 +54,17 @@ export default function AdminParts() {
 
                 <div className="flex gap-2 mb-6">
 
-                    <input
-                        placeholder="Buscar por nome, código ou marca"
-                        value={search || ""}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="border p-2 w-80 placeholder-textLight"
-                    />
+                    <div className="relative">
+
+                        <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            placeholder="Buscar por nome, código ou marca"
+                            value={search || ""}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="border p-2 w-80 placeholder-textLight pl-12 outline-none"
+                        />
+                    </div>
 
                     <button
                         onClick={loadParts}

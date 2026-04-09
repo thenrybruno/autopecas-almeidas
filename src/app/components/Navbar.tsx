@@ -16,7 +16,7 @@ export default function Navbar() {
     }, [])
 
     return (
-        <div className="w-full bg-background text-textLight p-4 flex justify-between items-center">
+        <div className="w-full bg-background text-textLight px-6 py-4 flex justify-between items-center">
             
             <Image src="/auto-peca.png" alt="Auto Peças" width={80} height={50}/>
 
@@ -36,6 +36,12 @@ export default function Navbar() {
                 {role === "ADMIN" && (
                     <Link href="/admin/parts" className="hover:text-textSecondary hover:scale-105 ease-in-out transition duration-400">
                         Gerenciar Peças
+                    </Link>
+                )}
+
+                {role === "ADMIN" && (
+                    <Link href="/users" className="hover:text-textSecondary hover:scale-105 ease-in-out transition duration-400">
+                        Cadastrar Vendedor
                     </Link>
                 )}
             </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { ShoppingCart } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -7,6 +8,8 @@ import { toast } from "sonner"
 export default function SellPartModal({ part, onClose }: any) {
 
     const [quantity, setQuantity] = useState(1)
+
+    const userId = localStorage.getItem("id")
 
     async function sellPart() {
 
@@ -17,11 +20,12 @@ export default function SellPartModal({ part, onClose }: any) {
             },
             body: JSON.stringify({
                 partId: part.id,
-                quantity
+                quantity,
+                userId
             })
         })
 
-        if(part.quantity < quantity) {
+        if (part.quantity < quantity) {
             toast.error("Estoque insuficiente")
             return
         }
@@ -58,14 +62,20 @@ export default function SellPartModal({ part, onClose }: any) {
 
                     <label>Quantidade</label>
 
-                    <input
-                        type="number"
-                        min="1"
-                        max={part.quantity}
-                        value={quantity}
-                        onChange={(e) => setQuantity(Number(e.target.value))}
-                        className="border border-borderColor p-2 w-full"
-                    />
+                    <div className="relative">
+
+                        <ShoppingCart size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            type="number"
+                            min="1"
+                            max={part.quantity}
+                            value={quantity}
+                            onChange={(e) => setQuantity(Number(e.target.value))}
+                            className="border border-borderColor rounded px-3 py-1 w-full pl-12 outline-none"
+                        />
+
+                    </div>
 
                 </div>
 

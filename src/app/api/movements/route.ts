@@ -22,7 +22,8 @@ export async function GET(req: Request) {
         },
 
         include: {
-            part: true
+            part: true,
+            seller: true
         },
 
         orderBy: {

@@ -1,5 +1,6 @@
 "use client"
 
+import { Boxes, DollarSign, Factory, Hash, Package } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -10,6 +11,15 @@ export default function EditPartModal({ part, onClose, onSaved }: any) {
     const [brand, setBrand] = useState(part.brand)
     const [quantity, setQuantity] = useState(part.quantity)
     const [price, setPrice] = useState(part.price)
+
+    function handleKeyDown(e: React.KeyboardEvent) {
+
+        if (e.key === "Enter") {
+            e.preventDefault()
+            updatePart()
+        }
+
+    }
 
     async function updatePart() {
 
@@ -55,38 +65,67 @@ export default function EditPartModal({ part, onClose, onSaved }: any) {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Nome"
-                        className="border border-borderColor rounded p-2"
-                    />
 
-                    <input
-                        value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                        placeholder="Código"
-                        className="border border-borderColor rounded p-2"
-                    />
+                    <div className="relative">
 
-                    <input
-                        value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                        placeholder="Marca"
-                        className="border border-borderColor rounded p-2"
-                    />
+                        <Package size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Nome"
+                            className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full"
+                        />
+
+                    </div>
+
+                    <div className="relative">
+
+                        <Hash size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Código"
+                            className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full"
+                        />
+
+                    </div>
+
+                    <div className="relative">
+
+                        <Factory size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            value={brand}
+                            onChange={(e) => setBrand(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Marca"
+                            className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full"
+                        />
+
+                    </div>
 
                     <div className="flex items-center justify-between">
 
                         <label>Quantidade</label>
 
-                        <input
-                            type="number"
-                            value={quantity}
-                            onChange={(e) => setQuantity(Number(e.target.value))}
-                            placeholder="Quantidade"
-                            className="border border-borderColor rounded p-2 w-32 text-center"
-                        />
+                        <div className="relative">
+
+                            <Boxes size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                            <input
+                                type="number"
+                                value={quantity}
+                                onChange={(e) => setQuantity(Number(e.target.value))}
+                                onKeyDown={handleKeyDown}
+                                placeholder="Quantidade"
+                                className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-32"
+                            />
+
+                        </div>
 
                     </div>
 
@@ -94,16 +133,22 @@ export default function EditPartModal({ part, onClose, onSaved }: any) {
 
                         <label>Preço</label>
 
-                        <input
-                            type="number"
-                            value={price}
-                            onChange={(e) => setPrice(Number(e.target.value))}
-                            placeholder="Preço"
-                            className="border border-borderColor rounded p-2 w-32 text-center"
-                        />
+                        <div className="relative">
+
+                            <DollarSign size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                            <input
+                                type="number"
+                                value={price}
+                                onChange={(e) => setPrice(Number(e.target.value))}
+                                onKeyDown={handleKeyDown}
+                                placeholder="Preço"
+                                className="border border-borderColor rounded px-3 py-1 w-32  pl-12 outline-none"
+                            />
+
+                        </div>
 
                     </div>
-
 
                 </div>
 

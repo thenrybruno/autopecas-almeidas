@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Navbar from "../components/Navbar"
 import SellPartModal from "../components/SellPartModal"
+import { Search } from "lucide-react"
 
 export default function Dashboard() {
 
@@ -36,17 +37,23 @@ export default function Dashboard() {
 
                 <div className="flex gap-2">
 
-                    <input
-                        className="border w-80 p-2 placeholder-textLight"
-                        value={search || ""}
-                        placeholder="Nome, código ou marca"
-                        onChange={(e) => setSearch(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                searchParts()
-                            }
-                        }}
-                    />
+                    <div className="relative">
+
+                        <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight" />
+
+                        <input
+                            className="border w-80 p-2 placeholder-textLight pl-12 outline-none"
+                            value={search || ""}
+                            placeholder="Nome, código ou marca"
+                            onChange={(e) => setSearch(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    searchParts()
+                                }
+                            }}
+                        />
+
+                    </div>
 
                     <button
                         onClick={searchParts}

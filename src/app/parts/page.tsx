@@ -4,6 +4,7 @@ import { useState } from "react"
 import Navbar from "../components/Navbar"
 import { toast } from "sonner"
 import Image from "next/image"
+import { Boxes, DollarSign, Factory, Hash, Package } from "lucide-react"
 
 export default function Parts() {
 
@@ -32,6 +33,8 @@ export default function Parts() {
 
     async function createPart() {
 
+        const userId = localStorage.getItem("id")
+
         const res = await fetch("/api/parts", {
 
             method: "POST",
@@ -41,7 +44,8 @@ export default function Parts() {
                 code,
                 brand,
                 quantity,
-                price
+                price,
+                sellerId: userId
             })
         })
 
@@ -76,17 +80,41 @@ export default function Parts() {
 
                     </div>
 
-                    <input className="border border-borderColor rounded px-3 py-1" type="text" onKeyDown={handleKeyDown} value={name} placeholder="Nome da peça" onChange={(e) => setName(e.target.value)} />
+                    <div className="relative">
 
-                    <input className="border border-borderColor rounded px-3 py-1" type="text" onKeyDown={handleKeyDown} value={code} placeholder="Código" onChange={(e) => setCode(e.target.value)} />
+                        <Package size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight"/>
 
-                    <input className="border border-borderColor rounded px-3 py-1" type="text" onKeyDown={handleKeyDown} value={brand} placeholder="Marca" onChange={(e) => setBrand(e.target.value)} />
+                        <input className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full" type="text" onKeyDown={handleKeyDown} value={name} placeholder="Nome da peça" onChange={(e) => setName(e.target.value)} />
+
+                    </div>
+
+                    <div className="relative">
+
+                        <Hash size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight"/>
+
+                        <input className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full" type="text" onKeyDown={handleKeyDown} value={code} placeholder="Código" onChange={(e) => setCode(e.target.value)} />
+
+                    </div>
+
+                    <div className="relative">
+
+                        <Factory size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight"/>
+
+                        <input className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-full" type="text" onKeyDown={handleKeyDown} value={brand} placeholder="Marca" onChange={(e) => setBrand(e.target.value)} />
+                        
+                    </div>
 
                     <div className="flex items-center justify-between">
 
                         <label>Quantidade</label>
 
-                        <input className="border border-borderColor rounded px-3 py-1 w-32" type="number" onKeyDown={handleKeyDown} value={quantity} placeholder="Quantidade" onChange={(e) => setQuantity(Number(e.target.value))} />
+                        <div className="relative">
+
+                            <Boxes size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight"/>
+
+                            <input className="border border-borderColor rounded px-3 py-1 pl-12 outline-none w-32" type="number" onKeyDown={handleKeyDown} value={quantity} placeholder="Quantidade" onChange={(e) => setQuantity(Number(e.target.value))} />
+
+                        </div>
 
                     </div>
 
@@ -94,7 +122,13 @@ export default function Parts() {
 
                         <label>Preço</label>
 
-                        <input className="border border-borderColor rounded px-3 py-1 w-32" type="number" onKeyDown={handleKeyDown} value={price} placeholder="Preço" onChange={(e) => setPrice(Number(e.target.value))} />
+                        <div className="relative">
+
+                            <DollarSign size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-textLight"/>
+
+                            <input className="border border-borderColor rounded px-3 py-1 w-32  pl-12 outline-none" type="number" onKeyDown={handleKeyDown} value={price} placeholder="Preço" onChange={(e) => setPrice(Number(e.target.value))} />
+
+                        </div>
 
                     </div>
 
