@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto Peças Almeidas
+<br>
 
-## Getting Started
+<img src="/screen.png"></img>
 
-First, run the development server:
+<br>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Bem-vindo ao projeto front-end da Auto Peças Almeidas, projeto para um sistema de estoque de peças para uma auto peças, onde o usuário pode consultar, vender, acompanhar relatório de vendas do mês, e caso o usuário seja admin, pode alterar e cadastrar novos usuários.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Índice
+- [Tecnologias Utilizadas](#techs-used)
+- [Equipe](#team)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tecnologias Utilizadas <a name="techs-used"></a>
+- [ESLint](https://eslint.org/)
+- [Lucide React](https://lucide.dev/guide/packages/lucide-react)
+- [NextJS](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Sonner](https://www.npmjs.com/package/sonner)
+- [TailwindCSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Electron]
+- [Prisma]
 
-## Learn More
+## Equipe <a name="team"></a>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Bruno Almeida](https://github.com/thenrybruno)

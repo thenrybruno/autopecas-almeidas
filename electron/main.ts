@@ -8,6 +8,8 @@ let mainWindow: BrowserWindow | null = null
 let splash: BrowserWindow | null = null
 let server: any
 
+const isDev = !app.isPackaged
+
 function setupDatabase() {
 
     const userData = app.getPath("userData")
@@ -17,6 +19,13 @@ function setupDatabase() {
     if (!fs.existsSync(dbPath)) {
 
         console.log("Banco não encontrado, criando banco...")
+
+        const baseDb = path.join(process.resourcesPath, "database.db")
+
+        if(fs.existsSync(baseDb)) {
+
+            fs.copyFileSync(baseDb, dbPath)
+        }
 
         try {
 
@@ -36,9 +45,24 @@ function setupDatabase() {
 }
 
 function startServer() {
-    server = spawn("node", [
-        path.join(__dirname, "../.next/standalone/server.js")
-    ])
+
+    const serverPath = path.join(__dirname, "../.next/standalone/server.js")
+    server = spawn("node", [serverPath], {
+        cwd: path.dirname(serverPath),
+        env: {
+            ...process.env,
+            PORT: "3000"
+        }
+    })
+
+    server.stdout.on("data", (data: any) => {
+        console.log(`Next: ${data}`)
+    })
+
+    server.stderr.on("data", (data: any) => {
+        console.log(`Next ERROR: ${data}`)
+    })
+
 }
 
 function createSplash() {
@@ -47,11 +71,10 @@ function createSplash() {
         width: 500,
         height: 400,
         frame: false,
-        transparent: false,
         alwaysOnTop: true
     })
 
-    splash.loadFile("electron/splash.html")
+    splash.loadFile(path.join(__dirname, "../electron/splash.html"))
 
 }
 
