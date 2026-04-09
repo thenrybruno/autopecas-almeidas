@@ -57,14 +57,14 @@ export default function Dashboard() {
 
                     <button
                         onClick={searchParts}
-                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded-2xl cursor-pointer w-32"
+                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded cursor-pointer w-32"
                     >
                         Buscar
                     </button>
 
                     <button
                         onClick={clearSearch}
-                        className="bg-yellow-400 hover:bg-yellow-600 transition duration-300 px-4 rounded-2xl cursor-pointer w-32"
+                        className="bg-yellow-400 hover:bg-yellow-600 text-black transition duration-300 px-4 rounded cursor-pointer w-32"
                     >
                         Limpar
                     </button>
@@ -101,7 +101,7 @@ export default function Dashboard() {
                                         setSelectedPart(p)
                                         setOpenModal(true)
                                         clearSearch()
-                                    }} className="bg-green-600 hover:bg-green-800 transition duration-300 text-white px-3 py-1 rounded-2xl cursor-pointer">
+                                    }} className="bg-green-600 hover:bg-green-800 transition duration-300 text-white px-3 py-1 rounded w-24 cursor-pointer">
                                         Vender
                                     </button>
                                 </td>

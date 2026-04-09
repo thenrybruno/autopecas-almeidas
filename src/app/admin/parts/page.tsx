@@ -68,14 +68,14 @@ export default function AdminParts() {
 
                     <button
                         onClick={loadParts}
-                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded-2xl cursor-pointer w-32"
+                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded cursor-pointer w-32"
                     >
                         Buscar
                     </button>
 
                     <button
                         onClick={clearSearch}
-                        className="bg-yellow-400 hover:bg-yellow-600 transition duration-300 px-4 rounded-2xl cursor-pointer w-32"
+                        className="bg-yellow-400 hover:bg-yellow-600 transition duration-300 px-4 rounded cursor-pointer w-32"
                     >
                         Limpar
                     </button>
@@ -118,7 +118,7 @@ export default function AdminParts() {
                                             setSelectedPart(p)
                                             setOpenModal(true)
                                         }}
-                                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-3 rounded-2xl py-1 cursor-pointer"
+                                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white text-sm w-24 px-3 rounded py-1 cursor-pointer"
                                     >
                                         Editar
                                     </button>

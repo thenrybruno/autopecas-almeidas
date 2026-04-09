@@ -91,7 +91,7 @@ export default function Sales() {
 
                     <button
                         onClick={load}
-                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded-2xl cursor-pointer w-24"
+                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 rounded cursor-pointer w-24"
                     >
                         Filtrar
                     </button>
@@ -142,13 +142,14 @@ export default function Sales() {
                                 </td>
                                 <td className="p-2 border">
                                     <div className="relative">
+                                        <Trash2 size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-textLight"/>
                                         <button
-                                            className="w-24 bg-primary hover:bg-primaryDark transition duration-300 p-2 rounded cursor-pointer text-sm pl-5"
+                                            className="w-28 bg-primary hover:bg-primaryDark transition duration-300 p-2 rounded cursor-pointer text-sm"
                                             onClick={() => {
                                                 setSelectedSale(s.id)
                                                 setConfirmOpen(true)
                                             }}>
-                                            <Trash2 size={14} className="absolute left-2 top-1/2 -translate-y-1/2 text-textLight ml-5"/>
+                                            
                                             Excluir
                                         </button>
                                     </div>

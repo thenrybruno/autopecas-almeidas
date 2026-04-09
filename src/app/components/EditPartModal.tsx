@@ -154,11 +154,11 @@ export default function EditPartModal({ part, onClose, onSaved }: any) {
 
                 <div className="flex justify-center items-center gap-4 mt-6">
 
-                    <button onClick={onClose} className="bg-primary hover:bg-primaryDark transition duration-300 px-4 py-2 cursor-pointer rounded-2xl w-[50%]">
+                    <button onClick={onClose} className="bg-primary hover:bg-primaryDark transition duration-300 px-4 py-2 cursor-pointer rounded w-[50%]">
                         Cancelar
                     </button>
 
-                    <button onClick={updatePart} className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 py-2 cursor-pointer rounded-2xl w-[50%]">
+                    <button onClick={updatePart} className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 py-2 cursor-pointer rounded w-[50%]">
                         Salvar
                     </button>
 

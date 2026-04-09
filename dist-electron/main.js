@@ -60,8 +60,8 @@ function createWindow() {
     });
 }
 electron_1.app.whenReady().then(() => {
-    createSplash();
     setupDatabase();
+    createSplash();
     startServer();
     electron_updater_1.autoUpdater.checkForUpdatesAndNotify();
     setTimeout(() => {

@@ -132,13 +132,13 @@ export default function Parts() {
 
                     </div>
 
-                    <button onClick={createPart} className="bg-green-600 hover:bg-green-800 transition duration-300 text-white px-4 py-2 rounded-2xl cursor-pointer">
+                    <button onClick={createPart} className="bg-green-600 hover:bg-green-800 transition duration-300 text-white px-4 py-2 rounded cursor-pointer">
                         Cadastrar
                     </button>
 
                     <button
                         onClick={cleanForm}
-                        className="bg-yellow-400 hover:bg-yellow-600 text-black transition duration-300 px-4 py-2 rounded-2xl cursor-pointer"
+                        className="bg-yellow-400 hover:bg-yellow-600 text-black transition duration-300 px-4 py-2 rounded cursor-pointer"
                     >
                         Limpar
                     </button>

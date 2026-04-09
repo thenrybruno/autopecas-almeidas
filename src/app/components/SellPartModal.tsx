@@ -83,14 +83,14 @@ export default function SellPartModal({ part, onClose }: any) {
 
                     <button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primaryDark transition duration-300 px-4 py-2 cursor-pointer rounded-2xl w-[50%]"
+                        className="bg-primary hover:bg-primaryDark transition duration-300 px-4 py-2 cursor-pointer rounded w-[50%]"
                     >
                         Cancelar
                     </button>
 
                     <button
                         onClick={sellPart}
-                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 py-2 cursor-pointer rounded-2xl w-[50%]"
+                        className="bg-blue-600 hover:bg-blue-800 transition duration-300 text-white px-4 py-2 cursor-pointer rounded w-[50%]"
                     >
                         Confirmar
                     </button>
